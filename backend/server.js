@@ -1,15 +1,11 @@
 require("dotenv").config();
-const express = require("express");
 const connectDB = require("./src/config/db");
-
-const app = express();
+const app = require("./src/app");
 
 connectDB();
 
-app.get("/", (req, res) => {
-  res.send("API SI-ECAD funcionando");
-});
+const PORT = process.env.PORT || 3000;
 
-app.listen(process.env.PORT, () => {
-  console.log(`Servidor corriendo en puerto ${process.env.PORT}`);
+app.listen(PORT, () => {
+  
 });
