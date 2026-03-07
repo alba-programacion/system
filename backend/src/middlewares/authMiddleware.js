@@ -1,24 +1,28 @@
 const jwt = require("jsonwebtoken");
 
+// Verificar token
 exports.verificarToken = (req, res, next) => {
-  let token = req.header("Authorization");
+  const token = req.header("Authorization")?.replace("Bearer ", "");
 
   if (!token) {
-    return res.status(401).json({ msg: "Acceso denegado, token requerido" });
+    return res.status(401).json({ msg: "No hay token, autorización denegada" });
   }
-
-  // Validar que empiece con Bearer
-  if (!token.startsWith("Bearer ")) {
-    return res.status(401).json({ msg: "Formato de token inválido" });
-  }
-
-  token = token.split(" ")[1]; // Extrae solo el JWT limpio
 
   try {
-    const verificado = jwt.verify(token, process.env.JWT_SECRET);
-    req.usuario = verificado;
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.usuario = decoded;
     next();
   } catch (error) {
-    return res.status(401).json({ msg: "Token inválido" });
+    res.status(401).json({ msg: "Token inválido" });
   }
+};
+
+// Verificar rol
+exports.verificarRol = (rolRequerido) => {
+  return (req, res, next) => {
+    if (!req.usuario || !req.usuario.roles.includes(rolRequerido)) {
+      return res.status(403).json({ msg: "No tienes permisos para esta acción" });
+    }
+    next();
+  };
 };
