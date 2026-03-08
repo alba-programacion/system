@@ -1,12 +1,15 @@
 const mongoose = require("mongoose");
 const User = require("../models/users");
 const SystemConfig = require("../models/systemConfig"); 
+const Carrera = require("../models/carreras"); 
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
+// ACTIVAR CUENTA
+
 exports.activarCuenta = async (req, res) => {
   try {
-    const { numeroControl, correoInstitucional, password, carreraId } = req.body;
+    const { numeroControl, correoInstitucional, password, carrera } = req.body;
 
     const usuario = await User.findOne({ numeroControl });
     if (!usuario) return res.status(404).json({ msg: "Usuario no encontrado" });
@@ -14,17 +17,14 @@ exports.activarCuenta = async (req, res) => {
       return res.status(400).json({ msg: "La cuenta ya está activa" });
     }
 
-    // Consultar adminActual desde systemConfig
     const config = await SystemConfig.findOne();
     const adminActual = config ? config.adminActual.toLowerCase() : null;
 
-    // Detectar rol
     let rolAsignado;
     if (/^\d{9}$/.test(numeroControl) && usuario.correoInstitucional.startsWith("L")) {
       rolAsignado = "alumno";
     } else if (/^[1-6]{3}$/.test(numeroControl)) {
       const correo = correoInstitucional.toLowerCase();
-
       if (correo.includes("psicologa")) {
         rolAsignado = "psicologa";
       } else if (correo === adminActual) {
@@ -36,7 +36,6 @@ exports.activarCuenta = async (req, res) => {
       return res.status(400).json({ msg: "Formato de número de control inválido" });
     }
 
-    // Encriptar contraseña
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
@@ -46,10 +45,14 @@ exports.activarCuenta = async (req, res) => {
     usuario.correoInstitucional = correoInstitucional;
 
     if (rolAsignado === "alumno") {
-      if (!carreraId) {
+      if (!carrera) {
         return res.status(400).json({ msg: "Debes seleccionar tu carrera" });
       }
-      usuario.carrera = new mongoose.Types.ObjectId(carreraId);
+      const carreraDoc = await Carrera.findOne({ nombreCarrera: carrera });
+      if (!carreraDoc) {
+        return res.status(400).json({ msg: "La carrera seleccionada no existe" });
+      }
+      usuario.carrera = carreraDoc._id;
     } else {
       usuario.carrera = null;
     }
@@ -62,7 +65,7 @@ exports.activarCuenta = async (req, res) => {
       correoInstitucional: usuario.correoInstitucional
     });
   } catch (error) {
-    console.error("Error en activarCuenta:", error);
+    //console.error("Error en activarCuenta:", error);
     res.status(500).json({ msg: "Error al activar cuenta", error: error.message });
   }
 };
@@ -91,12 +94,13 @@ exports.login = async (req, res) => {
 
     res.json({ msg: "Login correcto", roles: usuario.roles, token });
   } catch (error) {
-    console.error("Error en login:", error);
+    //console.error("Error en login:", error);
     res.status(500).json({ msg: "Error en login", error: error.message });
   }
 };
 
-// CAMBIAR CONTRASEÑA
+// CAMBIAR CONTRASEÑA (requiere token)
+
 exports.cambiarPassword = async (req, res) => {
   try {
     const { passwordActual, passwordNueva } = req.body;
@@ -118,7 +122,27 @@ exports.cambiarPassword = async (req, res) => {
 
     res.json({ msg: "Contraseña actualizada correctamente" });
   } catch (error) {
-    console.error("Error en cambiarPassword:", error);
+    //console.error("Error en cambiarPassword:", error);
+    res.status(500).json({ msg: "Error del servidor", error: error.message });
+  }
+};
+
+// RESET PASSWORD (sin token, para recuperación)
+exports.resetPassword = async (req, res) => {
+  try {
+    const { numeroControl, correoInstitucional, newPassword } = req.body;
+
+    const usuario = await User.findOne({ numeroControl, correoInstitucional });
+    if (!usuario) return res.status(404).json({ msg: "Usuario no encontrado" });
+
+    const salt = await bcrypt.genSalt(10);
+    usuario.password = await bcrypt.hash(newPassword, salt);
+
+    await usuario.save();
+
+    res.json({ msg: "Contraseña actualizada correctamente" });
+  } catch (error) {
+   // console.error("Error en resetPassword:", error);
     res.status(500).json({ msg: "Error del servidor", error: error.message });
   }
 };

@@ -1,14 +1,15 @@
 const express = require("express");
 const router = express.Router();
 
-const { activarCuenta, login, cambiarPassword } = require("../controllers/authController");
-const { updateAdmin } = require("../controllers/configController"); // 👈 nuevo controlador
+const { activarCuenta, login, cambiarPassword, resetPassword } = require("../controllers/authController");
+const { updateAdmin } = require("../controllers/configController");
 const { verificarToken, verificarRol } = require("../middlewares/authMiddleware");
 
 // Endpoints de autenticación
 router.post("/activar", activarCuenta);
 router.post("/login", login);
 router.put("/cambiar-password", verificarToken, cambiarPassword);
+router.post("/reset-password", resetPassword); // 👈 nuevo endpoint
 
 // Endpoint protegido solo para alumnos
 router.get("/alumno/dashboard", verificarToken, verificarRol("alumno"), (req, res) => {

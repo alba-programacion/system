@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 
 // Verificar token
+
 exports.verificarToken = (req, res, next) => {
   const token = req.header("Authorization")?.replace("Bearer ", "");
 
@@ -18,6 +19,7 @@ exports.verificarToken = (req, res, next) => {
 };
 
 // Verificar rol
+
 exports.verificarRol = (rolRequerido) => {
   return (req, res, next) => {
     if (!req.usuario || !req.usuario.roles.includes(rolRequerido)) {

@@ -23,7 +23,7 @@ exports.updateAdmin = async (req, res) => {
 
     res.json({ msg: "Administrador actualizado correctamente", adminActual: config.adminActual });
   } catch (error) {
-    console.error("Error en updateAdmin:", error);
+    //console.error("Error en updateAdmin:", error);
     res.status(500).json({ msg: "Error al actualizar administrador", error: error.message });
   }
 };
