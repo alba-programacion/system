@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/home"; 
 import Login from "./pages/Login";
 import ActivateAccount from "./pages/ActivateAccount";
 import ForgotPassword from "./pages/ForgotPassword";
@@ -12,15 +13,15 @@ function App() {
   return (
     <Router>
       <Routes>
-       
-        <Route path="/" element={<Navigate to="/activar" replace />} />
+        {/* Página pública principal */}
+        <Route path="/" element={<Home />} />
 
-       
+        {/* Autenticación */}
         <Route path="/activar" element={<ActivateAccount />} />
         <Route path="/login" element={<Login />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
 
-        
+        {/* Dashboards protegidos */}
         <Route
           path="/dashboard/alumno"
           element={

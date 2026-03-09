@@ -1,6 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 const { verificarToken } = require("./middlewares/authMiddleware");
+const publicRoutes = require("./routes/publicRoutes");
+
 
 const app = express();
 
@@ -25,5 +27,10 @@ app.get("/api/privado", verificarToken, (req, res) => {
 
 // Rutas de autenticación
 app.use("/api/auth", require("./routes/authRoutes"));
+
+
+//publicidad 
+app.use("/api/public", publicRoutes);
+
 
 module.exports = app;
