@@ -2,41 +2,49 @@ const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema(
   {
-    numeroControl: {
-      type: String,
-      required: true,
-      unique: true,
-      trim: true
-    },
-    correoInstitucional: {
-      type: String,
-      required: true,
-      unique: true,
-      lowercase: true,
-      trim: true
-    },
-    nombres: { type: String, required: true, trim: true },
-    apPaterno: { type: String, required: true, trim: true },
-    apMaterno: { type: String, required: true, trim: true },
-    password: { type: String, default: null },
+    numeroControl: { type: String, required: true, unique: true },
+    correoInstitucional: { type: String, required: true, unique: true },
+    nombres: { type: String, required: true },
+    apPaterno: { type: String, required: true },
+    apMaterno: { type: String, required: true },
+    password: { type: String }, 
+    // Actualizamos los roles permitidos
     roles: {
       type: [String],
-      enum: ["admin", "alumno", "profesor", "psicologa"],
-      default: []
+      enum: ["admin", "alumno", "profesor", "psicologa", "jefe departamento"],
+      default: ["alumno"]
     },
+    // Añadimos "bloqueada" al enum
     cuenta: {
       type: String,
-      enum: ["activa", "inactiva"],
-      default: "inactiva"
+      enum: ["activa", "inactiva", "bloqueada"],
+      default: "activa"
     },
-    carrera: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Carrera",
-      default: null
+    genero: { 
+      type: String, 
+      enum: ["Masculino", "Femenino", "Otro", "Hombre", "Mujer"],
+      default: "Otro"
     },
-    fechaRegistro: { type: Date, default: Date.now }
+    rfc: { type: String, default: "" },
+    curp: { type: String, default: "" },
+    gradoEstudios: { type: String, default: "" },
+    nombreCarrera: { type: String, default: "" },
+    datosLaborales: {
+      puesto: { type: String, default: "" },
+      departamento: { type: String, default: "" },
+      institucion: { type: String, default: "" },
+      clavePresupuestal: { type: String, default: "" },
+      jefeInmediato: { type: String, default: "" },
+      telefonoOficial: { type: String, default: "" },
+      telefonoExt: { type: String, default: "" },
+      horarioLaboral: { type: String, default: "" }
+    },
+    carrera: { type: mongoose.Schema.Types.ObjectId, ref: "carreras" }
   },
-  { timestamps: true }
+  { 
+    // Esto crea automáticamente createdAt y updatedAt (útil para el historial)
+    timestamps: true 
+  }
 );
 
 module.exports = mongoose.model("User", userSchema);

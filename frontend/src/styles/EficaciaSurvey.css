@@ -1,0 +1,475 @@
+/* Estilos para la Encuesta de Eficacia de la Capacitación Docente (Formato ITGAM-AC-005-04) */
+.eficacia-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  color: #000;
+}
+
+.eficacia-document {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 30px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Encabezado del Formato Oficial */
+.eficacia-header-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.eficacia-header-table td {
+  border: 1px solid #000;
+  padding: 8px;
+  text-align: center;
+  vertical-align: middle;
+  color: #000;
+}
+
+.eficacia-logo-cell {
+  width: 25%;
+}
+
+.eficacia-logo-img {
+  max-height: 55px;
+  object-fit: contain;
+}
+
+.eficacia-title-cell {
+  width: 50%;
+  font-weight: bold;
+}
+
+.eficacia-title-cell h2 {
+  font-size: 11px;
+  margin: 0 0 4px 0;
+  font-weight: normal;
+}
+
+.eficacia-title-cell h1 {
+  font-size: 13px;
+  margin: 0;
+  font-weight: bold;
+}
+
+.eficacia-meta-cell {
+  width: 25%;
+  font-size: 10px;
+  text-align: left !important;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+/* Título de Institución y Subdirección */
+.eficacia-sub-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.eficacia-sub-header h2 {
+  font-size: 14px;
+  margin: 0;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  color: #000;
+}
+
+.eficacia-sub-header h3 {
+  font-size: 12px;
+  margin: 4px 0 0 0;
+  font-weight: bold;
+  color: #000;
+}
+
+/* Campos de entrada */
+.eficacia-meta-fields {
+  margin-bottom: 20px;
+}
+
+.eficacia-meta-row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 12px;
+}
+
+.eficacia-meta-group {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  flex-grow: 1;
+}
+
+.eficacia-meta-group label {
+  font-size: 11px;
+  font-weight: bold;
+  white-space: nowrap;
+  color: #000;
+}
+
+.eficacia-meta-input {
+  border: none;
+  border-bottom: 1px dashed #000;
+  flex-grow: 1;
+  font-size: 11px;
+  padding: 1px 4px;
+  background-color: transparent;
+  color: #000;
+  outline: none;
+  width: 100%;
+}
+
+.eficacia-meta-input:focus {
+  border-bottom: 1.5px solid #001e3c;
+  background-color: #f8fafc;
+}
+
+.eficacia-meta-line {
+  border-bottom: 1px solid #000;
+  flex-grow: 1;
+  font-size: 11px;
+  padding-bottom: 1px;
+  min-height: 16px;
+  font-weight: bold;
+  color: #000;
+}
+
+/* Instrucciones */
+.eficacia-instruction-text {
+  font-size: 10.5px;
+  line-height: 1.4;
+  margin-bottom: 15px;
+  color: #000;
+  text-align: justify;
+}
+
+/* Escala */
+.eficacia-scale-section {
+  border: 1px solid #000;
+  margin-bottom: 20px;
+}
+
+.eficacia-scale-title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 11px;
+  padding: 6px;
+  border-bottom: 1px solid #000;
+  background-color: #f8fafc;
+  color: #000;
+}
+
+.eficacia-scale-grid {
+  display: flex;
+  width: 100%;
+}
+
+.eficacia-scale-box {
+  flex: 1;
+  text-align: center;
+  padding: 6px;
+  border-right: 1px solid #000;
+  font-size: 10px;
+  color: #000;
+}
+
+.eficacia-scale-box:last-child {
+  border-right: none;
+}
+
+.eficacia-scale-box strong {
+  display: block;
+  font-size: 11px;
+  margin-bottom: 4px;
+  color: #000;
+}
+
+/* Tabla de Preguntas */
+.eficacia-table-container {
+  border: 1.5px solid #000;
+  background-color: #fff;
+  margin-bottom: 20px;
+}
+
+.eficacia-table-header {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 1.5px solid #000;
+  background-color: #f1f5f9;
+  font-weight: bold;
+  min-height: 32px;
+}
+
+.eficacia-th-num {
+  width: 30px;
+  border-right: 1px solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: #000;
+  flex-shrink: 0;
+}
+
+.eficacia-th-text {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  padding: 6px 10px;
+  font-size: 10px;
+  color: #000;
+}
+
+.eficacia-th-options {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.eficacia-th-opt-num {
+  width: 32px;
+  border-left: 1px solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: #000;
+}
+
+/* Filas de preguntas */
+.eficacia-row {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 1px solid #000;
+  min-height: 32px;
+}
+
+.eficacia-row:last-child {
+  border-bottom: none;
+}
+
+.eficacia-cell-num {
+  width: 30px;
+  border-right: 1px solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: bold;
+  color: #000;
+  flex-shrink: 0;
+}
+
+.eficacia-cell-text {
+  flex-grow: 1;
+  padding: 6px 10px;
+  font-size: 10px;
+  color: #000;
+  display: flex;
+  align-items: center;
+}
+
+.eficacia-cell-options {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.eficacia-cell-opt-box {
+  width: 32px;
+  border-left: 1px solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+  color: #000;
+  cursor: pointer;
+  background-color: #fff;
+  transition: background-color 0.2s;
+  user-select: none;
+}
+
+.eficacia-cell-opt-box.selected {
+  background-color: #e0f2fe;
+}
+
+.eficacia-cell-opt-box:hover:not(.read-only) {
+  background-color: #f1f5f9;
+}
+
+.eficacia-cell-opt-box.read-only {
+  cursor: default;
+}
+
+/* Sugerencias */
+.eficacia-suggestions-block {
+  margin-top: 20px;
+  border: 1px solid #000;
+  padding: 12px;
+}
+
+.eficacia-suggestions-title {
+  font-size: 11px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #000;
+}
+
+.eficacia-suggestions-textarea {
+  width: 100%;
+  height: 80px;
+  border: 1px dashed #888;
+  padding: 8px;
+  font-size: 11px;
+  outline: none;
+  resize: vertical;
+  background-color: transparent;
+  color: #000;
+  box-sizing: border-box;
+}
+
+.eficacia-suggestions-textarea:focus {
+  border: 1px solid #001e3c;
+  background-color: #f8fafc;
+}
+
+.eficacia-suggestions-lines {
+  margin-top: 10px;
+}
+
+.eficacia-suggestions-line {
+  border-bottom: 1px solid #000;
+  height: 24px;
+}
+
+/* Botón de Guardar */
+.eficacia-actions-panel {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.eficacia-save-btn {
+  background-color: #10b981;
+  color: #fff;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.2);
+  transition: all 0.2s;
+}
+
+.eficacia-save-btn:hover {
+  background-color: #059669;
+  transform: translateY(-1px);
+}
+
+.eficacia-save-btn:disabled {
+  background-color: #a7f3d0;
+  cursor: not-allowed;
+}
+
+/* Medias de Impresión */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .eficacia-wrapper, .eficacia-wrapper * {
+    visibility: visible;
+  }
+  .eficacia-wrapper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    color: #000 !important;
+    background: #fff !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .eficacia-document {
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+  }
+    .eficacia-cell-opt-box.selected {
+      background-color: transparent !important;
+      color: #000 !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+  }
+
+
+/* Mobile Responsiveness for Efficiency Survey screen-view */
+@media (max-width: 768px) {
+  .eficacia-wrapper {
+    padding: 10px 5px !important;
+  }
+  
+  .eficacia-document {
+    padding: 15px 10px !important;
+  }
+  
+  .eficacia-meta-row {
+    flex-direction: column !important;
+    gap: 15px !important;
+  }
+  
+  .eficacia-meta-group {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 5px !important;
+  }
+  
+  .eficacia-meta-group label {
+    white-space: normal !important;
+  }
+  
+  .eficacia-scale-grid {
+    flex-direction: column !important;
+    border: 1px solid #000;
+  }
+  
+  .eficacia-scale-box {
+    border-right: none !important;
+    border-bottom: 1px solid #000;
+    padding: 8px !important;
+  }
+  
+  .eficacia-scale-box:last-child {
+    border-bottom: none !important;
+  }
+  
+  .eficacia-header-table {
+    display: block !important;
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .eficacia-header-table td {
+    min-width: 120px !important;
+  }
+  
+  .eficacia-table-container {
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    margin-bottom: 20px;
+  }
+  
+  .eficacia-table-header, .eficacia-row {
+    min-width: 600px !important;
+  }
+}
+

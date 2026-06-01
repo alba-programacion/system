@@ -5,9 +5,11 @@ import ActivateAccount from "./pages/ActivateAccount";
 import ForgotPassword from "./pages/ForgotPassword";
 import DashboardAlumno from "./pages/DashboardAlumno";
 import DashboardProfesor from "./pages/DashboardProfesor";
-import DashboardAdmin from "./pages/DashboardAdmin";
+import DashboardAdmin from "./pages/AdminDashboard";
 import DashboardPsicologa from "./pages/DashboardPsicologa";
 import ProtectedRoute from "./components/ProtectedRoute"; 
+import AsistenciaLanding from "./pages/AsistenciaLanding"; 
+
 
 function App() {
   return (
@@ -20,6 +22,16 @@ function App() {
         <Route path="/activar" element={<ActivateAccount />} />
         <Route path="/login" element={<Login />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
+
+        {/* Ruta para el registro rápido de asistencia con QR */}
+        <Route
+          path="/asistencia/:token"
+          element={
+            <ProtectedRoute role="profesor">
+              <AsistenciaLanding />
+            </ProtectedRoute>
+          }
+        />
 
         {/* Dashboards protegidos */}
         <Route
@@ -58,5 +70,7 @@ function App() {
     </Router>
   );
 }
+
+
 
 export default App;

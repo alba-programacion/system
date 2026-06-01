@@ -9,3 +9,4 @@ const systemConfigSchema = new mongoose.Schema({
 
 module.exports = mongoose.model("SystemConfig", systemConfigSchema);
 
+

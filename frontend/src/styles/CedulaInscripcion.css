@@ -1,0 +1,416 @@
+/* Estilos en Pantalla - Cédula de Inscripción */
+.cedula-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.cedula-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.btn-save-cedula,
+.btn-print-cedula {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-save-cedula {
+  background-color: #0d6efd;
+  color: white;
+}
+
+.btn-save-cedula:hover {
+  background-color: #0b5ed7;
+  transform: translateY(-2px);
+}
+
+.btn-print-cedula {
+  background-color: #198754;
+  color: white;
+}
+
+.btn-print-cedula:hover {
+  background-color: #157347;
+  transform: translateY(-2px);
+}
+
+/* Contenedor del documento oficial */
+.cedula-document {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 40px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+  min-height: 1050px;
+  box-sizing: border-box;
+}
+
+/* Encabezado */
+.cedula-header {
+  display: grid;
+  grid-template-columns: 180px 1fr 100px;
+  align-items: center;
+  border-bottom: 2px solid #000;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+.header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.border-box {
+  border: 1px solid #000;
+  padding: 3px 8px;
+  font-size: 10px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.header-center {
+  text-align: center;
+}
+
+.header-center h2 {
+  font-size: 14px;
+  margin: 0;
+  letter-spacing: 2px;
+  font-weight: normal;
+}
+
+.header-center h1 {
+  font-size: 20px;
+  margin: 5px 0 0 0;
+  font-weight: bold;
+  color: #000;
+}
+
+.header-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.logo-img {
+  max-height: 55px;
+  object-fit: contain;
+}
+
+/* Fila de Fecha */
+.cedula-date-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+/* Fieldset oficial */
+.cedula-fieldset {
+  border: 1.5px solid #000;
+  padding: 15px;
+  margin-bottom: 20px;
+  position: relative;
+  background-color: transparent;
+}
+
+.fieldset-legend {
+  font-weight: bold;
+  font-size: 12px;
+  padding: 0 10px;
+  color: #000;
+}
+
+/* Filas y columnas de formularios */
+.form-row {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 12px;
+  align-items: flex-end;
+}
+
+.form-row:last-child {
+  margin-bottom: 0;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 10px;
+  position: relative;
+}
+
+.field-group.inline {
+  width: auto;
+}
+
+.field-group.col-12 { width: 100%; }
+.field-group.col-8 { width: 66.66%; }
+.field-group.col-6 { width: 50%; }
+.field-group.col-4 { width: 33.33%; }
+
+.field-group label {
+  font-size: 11px;
+  font-weight: bold;
+  white-space: nowrap;
+  color: #000;
+  margin-bottom: 2px;
+}
+
+/* Línea de rellenado de texto */
+.fill-line {
+  border-bottom: 1px solid #000;
+  flex-grow: 1;
+  font-size: 12px;
+  padding-bottom: 2px;
+  min-height: 18px;
+  color: #111;
+}
+
+.text-data {
+  font-weight: bold;
+}
+
+/* Inputs con estilo de línea física */
+.fill-input {
+  border: none;
+  border-bottom: 1px dashed #444;
+  flex-grow: 1;
+  font-size: 12px;
+  padding: 2px 5px;
+  background-color: transparent;
+  color: #000;
+  outline: none;
+  width: 100%;
+}
+
+.fill-input:focus {
+  border-bottom: 1.5px solid #0d6efd;
+  background-color: #f8f9fa;
+}
+
+.fill-input:disabled {
+  border-bottom: 1px solid #000;
+  color: #333;
+}
+
+/* Fila de Nombre */
+.name-fields-row {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.name-fields-row .field-group {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 4px;
+}
+
+.sub-label {
+  font-size: 8px;
+  text-align: center;
+  font-weight: bold;
+  color: #444;
+  display: block;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+/* Género */
+.gender-choices {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  width: 100%;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.gender-title {
+  color: #000;
+  margin-right: 10px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.checkbox-label input[type="radio"] {
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+
+/* Pie de página - Firma */
+.cedula-footer-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 50px;
+  padding-right: 40px;
+}
+
+.signature-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 250px;
+}
+
+.signature-line {
+  width: 100%;
+  border-top: 1.5px solid #000;
+  margin-bottom: 5px;
+}
+
+.signature-label {
+  font-size: 11px;
+  font-weight: bold;
+}
+
+/* Optimización para IMPRESIÓN */
+@media print {
+  @page {
+    size: letter;
+    margin: 1cm 1.5cm;
+  }
+
+  body {
+    background-color: #fff;
+    color: #000;
+    margin: 0;
+    padding: 0;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .cedula-wrapper {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .cedula-document {
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    min-height: auto;
+  }
+
+  /* Ajustes de espaciado y fuentes específicos para impresión */
+  .cedula-header {
+    padding-bottom: 8px !important;
+    margin-bottom: 10px !important;
+  }
+  
+  .cedula-header h1 {
+    font-size: 16px !important;
+    margin-top: 5px !important;
+  }
+  
+  .cedula-date-row {
+    margin-bottom: 10px !important;
+  }
+
+  .cedula-fieldset {
+    padding: 8px 12px !important;
+    margin-bottom: 10px !important;
+    border: 1px solid #000 !important;
+  }
+  
+  .fieldset-legend {
+    font-size: 10px !important;
+  }
+
+  .form-row {
+    margin-bottom: 6px !important;
+    gap: 10px !important;
+  }
+
+  .field-group label {
+    font-size: 9px !important;
+  }
+
+  .fill-line {
+    font-size: 11px !important;
+    min-height: 14px !important;
+  }
+
+  .fill-input {
+    font-size: 11px !important;
+    padding: 1px 2px !important;
+    border-bottom: 1px solid #000 !important;
+    background-color: transparent;
+  }
+
+  .name-fields-row {
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+  }
+  
+  .sub-label {
+    font-size: 7px !important;
+  }
+
+  .cedula-footer-row {
+    margin-top: 15px !important;
+    padding-right: 20px !important;
+  }
+
+  .signature-box {
+    width: 200px !important;
+  }
+
+  .signature-image-container {
+    height: 50px !important;
+  }
+  
+  .signature-image-container img {
+    max-height: 45px !important;
+  }
+
+  #printable-cedula {
+    page-break-inside: avoid;
+  }
+}
+
+/* Mobile Responsiveness for Enrollment Document screen-view */
+@media (max-width: 768px) {
+  .cedula-wrapper {
+    padding: 10px 5px;
+  }
+
+  .cedula-document {
+    padding: 25px 20px;
+    min-width: 850px; /* Keep official sheet structure intact and clean for horizontal swipe */
+    box-sizing: border-box;
+  }
+}
+
+

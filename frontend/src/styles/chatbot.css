@@ -1,0 +1,232 @@
+/* src/styles/chatbot.css */
+
+.fab-container {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 15px;
+  z-index: 1000;
+}
+
+/* Burbuja de texto previa */
+.chat-bubble {
+  background: white;
+  padding: 12px 20px;
+  border-radius: 15px 15px 0 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  font-size: 0.9rem;
+  color: #1e293b;
+  border: 1px solid #e2e8f0;
+}
+
+/* Botón Circular */
+.fab {
+  width: 100px;
+  height: 100px;
+  background-color: #003366;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,51,102,0.3);
+  transition: transform 0.2s;
+  padding: 0;
+  overflow: hidden;
+}
+
+.fab:hover {
+  transform: scale(1.1);
+}
+
+.halcon-img-icon {
+  width: 120%;
+  height: 120%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Ventana de Chat abierta */
+.chat-window {
+  width: 400px;
+  height: 550px;
+  background: white;
+  border-radius: 1.5rem;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 10px;
+  animation: slideIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(20px) scale(0.9); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.chat-header {
+  background: #003366;
+  color: white;
+  padding: 1rem 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.header-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.voice-toggle {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.6);
+  cursor: pointer;
+  padding: 5px;
+  transition: color 0.3s;
+}
+
+.voice-toggle.active {
+  color: #f39c12;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.8rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.chat-body {
+  flex: 1;
+  padding: 1.2rem;
+  background: #f8fafc;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.msg-wrapper {
+  display: flex;
+  width: 100%;
+}
+
+.msg-wrapper.bot { justify-content: flex-start; }
+.msg-wrapper.user { justify-content: flex-end; }
+
+.bot-msg, .user-msg {
+  padding: 12px 16px;
+  max-width: 80%;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.bot-msg {
+  background: white;
+  color: #1e293b;
+  border-radius: 0 18px 18px 18px;
+  border: 1px solid #e2e8f0;
+}
+
+.user-msg {
+  background: #003366;
+  color: white;
+  border-radius: 18px 18px 0 18px;
+}
+
+.animate-pop {
+  animation: pop 0.3s ease-out;
+}
+
+@keyframes pop {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.chat-footer {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-top: 1px solid #e2e8f0;
+  background: white;
+}
+
+.chat-footer input {
+  flex: 1;
+  border: 1px solid #e2e8f0;
+  border-radius: 25px;
+  padding: 12px 18px;
+  outline: none;
+  font-size: 0.95rem;
+  transition: border-color 0.2s;
+}
+
+.chat-footer input:focus {
+  border-color: #003366;
+}
+
+.mic-btn {
+  background: #f1f5f9;
+  border: none;
+  color: #64748b;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.mic-btn.listening {
+  background: #e74c3c;
+  color: white;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(231, 76, 60, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0); }
+}
+
+.send-btn {
+  background: #003366;
+  border: none;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.send-btn:hover {
+  transform: scale(1.1);
+}

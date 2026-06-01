@@ -1,0 +1,431 @@
+/* Estilos para la Encuesta de Eficacia de la Capacitación (Estudiante) (Formato ITGAM-AC-005-03) */
+.estudiante-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  color: #000;
+}
+
+.estudiante-document {
+  background-color: #fff;
+  border: 1px solid #000;
+  padding: 25px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  position: relative;
+  color: #000;
+}
+
+/* Cabecera del documento */
+.estudiante-header-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.estudiante-header-table td {
+  border: 1px solid #000;
+  padding: 8px;
+  text-align: center;
+  vertical-align: middle;
+  color: #000;
+}
+
+.estudiante-header-left {
+  width: 25%;
+  font-size: 11px;
+  line-height: 1.4;
+  font-weight: bold;
+}
+
+.estudiante-header-left div {
+  border-bottom: 1px solid #000;
+  padding: 4px 0;
+}
+
+.estudiante-header-left div:last-child {
+  border-bottom: none;
+}
+
+.estudiante-header-center {
+  width: 50%;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.estudiante-header-center h3 {
+  margin: 0 0 4px 0;
+  font-size: 11px;
+  color: #000;
+  letter-spacing: 0.5px;
+}
+
+.estudiante-header-center h2 {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 800;
+  color: #000;
+}
+
+.estudiante-header-right {
+  width: 25%;
+  height: 70px;
+}
+
+.estudiante-logo-img {
+  max-height: 60px;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+/* Título de la Subdirección Académica */
+.estudiante-subheading {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.estudiante-subheading h4 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  color: #000;
+}
+
+.estudiante-subheading h3 {
+  margin: 4px 0 0 0;
+  font-size: 15px;
+  font-weight: 800;
+  color: #000;
+}
+
+/* Campos informativos */
+.estudiante-meta-grid {
+  margin-bottom: 20px;
+}
+
+.estudiante-meta-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.estudiante-meta-row label {
+  font-weight: bold;
+  font-size: 13px;
+  margin-right: 10px;
+  white-space: nowrap;
+  color: #000;
+}
+
+.estudiante-meta-input {
+  flex-grow: 1;
+  border: none;
+  border-bottom: 1px solid #000;
+  font-size: 13px;
+  padding: 2px 5px;
+  outline: none;
+  background-color: transparent;
+  color: #000;
+}
+
+.estudiante-meta-input:focus {
+  border-bottom: 2px solid #001e3c;
+}
+
+.estudiante-meta-text {
+  flex-grow: 1;
+  border-bottom: 1px solid #000;
+  font-size: 13px;
+  padding: 2px 5px;
+  min-height: 20px;
+  text-align: left;
+  color: #000;
+}
+
+/* Instrucciones */
+.estudiante-instructions {
+  font-size: 12.5px;
+  line-height: 1.5;
+  margin-bottom: 15px;
+  text-align: justify;
+  color: #000;
+}
+
+/* Título Participante */
+.estudiante-participant-title {
+  text-align: center;
+  font-weight: bold;
+  font-style: italic;
+  text-decoration: underline;
+  margin-bottom: 15px;
+  font-size: 13px;
+  color: #000;
+}
+
+/* Escala */
+.estudiante-scale-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.estudiante-scale-table td {
+  border: 1px solid #000;
+  padding: 6px 4px;
+  text-align: center;
+  vertical-align: middle;
+  width: 20%;
+  font-size: 11px;
+  color: #000;
+}
+
+.estudiante-scale-num {
+  font-weight: bold;
+  display: block;
+  font-size: 12px;
+  margin-bottom: 2px;
+}
+
+/* Sub-indicador */
+.estudiante-intro-phrase {
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #000;
+}
+
+/* Tabla de preguntas */
+.estudiante-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 25px;
+}
+
+.estudiante-table th,
+.estudiante-table td {
+  border: 1px solid #000;
+  padding: 8px;
+  color: #000;
+  font-size: 12.5px;
+  vertical-align: middle;
+}
+
+.estudiante-th-num {
+  text-align: center;
+  width: 30px;
+  font-weight: bold;
+}
+
+.estudiante-th-desc {
+  text-align: left;
+}
+
+.estudiante-th-scale {
+  text-align: center;
+  width: 40px;
+  font-weight: bold;
+}
+
+.estudiante-cell-num {
+  text-align: center;
+  font-weight: bold;
+}
+
+.estudiante-cell-desc {
+  text-align: left;
+  line-height: 1.4;
+}
+
+.estudiante-cell-scale {
+  text-align: center;
+  width: 40px;
+  cursor: pointer;
+  padding: 0 !important;
+  user-select: none;
+}
+
+.estudiante-option-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 38px;
+  font-weight: bold;
+  font-size: 14px;
+  color: #000;
+  background-color: transparent;
+  transition: background-color 0.2s;
+}
+
+.estudiante-option-box.selected {
+  background-color: #f1f5f9;
+  color: #000;
+}
+
+.estudiante-cell-scale:hover .estudiante-option-box:not(.selected) {
+  background-color: #f8fafc;
+}
+
+/* Sugerencias */
+.estudiante-suggestions {
+  margin-top: 20px;
+}
+
+.estudiante-suggestions p {
+  font-size: 12.5px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: justify;
+  line-height: 1.4;
+  color: #000;
+}
+
+.estudiante-textarea {
+  width: 100%;
+  border: 1px solid #000;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 13px;
+  outline: none;
+  resize: vertical;
+  background-color: transparent;
+  color: #000;
+  font-family: inherit;
+  line-height: 1.6;
+}
+
+.estudiante-textarea:focus {
+  border: 2px solid #001e3c;
+}
+
+.estudiante-suggestions-print {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.estudiante-print-line {
+  border-bottom: 1px solid #000;
+  height: 25px;
+  width: 100%;
+}
+
+/* Pie de firmas / Botón guardar */
+.estudiante-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.btn-estudiante-save {
+  background-color: #001e3c;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.btn-estudiante-save:hover {
+  background-color: #002d5a;
+}
+
+/* Soporte de Impresión */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  .estudiante-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .estudiante-document {
+    border: none !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    background: transparent !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .estudiante-textarea {
+    display: none !important;
+  }
+
+  .estudiante-option-box {
+    background-color: transparent !important;
+  }
+}
+
+/* Mobile Responsiveness for Student Efficiency Survey screen-view */
+@media (max-width: 768px) {
+  .estudiante-wrapper {
+    padding: 10px 5px !important;
+  }
+  
+  .estudiante-document {
+    padding: 15px 10px !important;
+  }
+  
+  .estudiante-meta-row {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 5px !important;
+  }
+  
+  .estudiante-meta-row label {
+    white-space: normal !important;
+  }
+  
+  .estudiante-scale-table {
+    display: block !important;
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .estudiante-scale-table td {
+    min-width: 100px !important;
+  }
+  
+  .estudiante-header-table {
+    display: block !important;
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .estudiante-header-table td {
+    min-width: 120px !important;
+  }
+  
+  .estudiante-table {
+    display: block !important;
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .estudiante-table th, .estudiante-table td {
+    min-width: 80px !important;
+  }
+  
+  .estudiante-table .estudiante-cell-desc, .estudiante-table .estudiante-th-desc {
+    min-width: 250px !important;
+  }
+}
+

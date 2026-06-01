@@ -1,0 +1,208 @@
+/* src/styles/SurveyForm.css */
+
+.survey-printable-container {
+    width: 210mm; /* A4 width */
+    min-height: 297mm;
+    padding: 20mm;
+    margin: 0 auto;
+    background: white;
+    color: black;
+    font-family: 'Times New Roman', serif;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+}
+
+.survey-header {
+    display: flex;
+    border: 1.5px solid black;
+    margin-bottom: 10px;
+}
+
+.header-box {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-right: 1.5px solid black;
+}
+
+.header-box:last-child { border-right: none; }
+
+.top-left { width: 25%; font-size: 0.9rem; font-weight: bold; }
+.top-center { width: 50%; text-align: center; }
+.top-center h3 { margin: 0; font-size: 0.8rem; }
+.top-center h2 { margin: 0; font-size: 1rem; border-top: 1px solid black; padding-top: 5px; }
+
+.top-right { width: 25%; text-align: center; }
+.itgam-logo-placeholder { font-size: 2rem; font-weight: 900; }
+.itgam-logo-text { font-size: 0.6rem; margin-top: -5px; }
+
+.institution-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.institution-title h2 { margin: 0; font-size: 1.1rem; }
+.institution-title h3 { margin: 0; font-size: 1rem; }
+
+.form-fields {
+    margin-bottom: 15px;
+}
+
+.field-row {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 5px;
+    font-size: 0.95rem;
+    font-weight: bold;
+}
+
+.field-line {
+    flex: 1;
+    border-bottom: 1px solid black;
+    margin-left: 10px;
+    padding-bottom: 2px;
+    font-weight: normal;
+}
+
+.survey-instructions {
+    font-size: 0.85rem;
+    text-align: justify;
+    line-height: 1.2;
+    margin-bottom: 15px;
+}
+
+.participant-label {
+    text-align: center;
+    font-weight: bold;
+    text-decoration: underline;
+    margin: 10px 0;
+}
+
+.scale-legend {
+    display: flex;
+    border: 1px solid black;
+    margin-bottom: 15px;
+}
+
+.scale-item {
+    flex: 1;
+    border-right: 1px solid black;
+    text-align: center;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    font-size: 0.8rem;
+}
+.scale-item:last-child { border-right: none; }
+.scale-num { font-weight: bold; font-size: 1rem; }
+.scale-text { line-height: 1; }
+
+.survey-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.survey-table th, .survey-table td {
+    border: 1px solid black;
+    padding: 5px 8px;
+    font-size: 0.85rem;
+}
+
+.question-col { text-align: left; width: 80%; }
+.num-col { width: 4%; text-align: center; }
+
+.question-text { text-align: left; height: 25px; vertical-align: middle; }
+
+.suggestions-section {
+    font-size: 0.85rem;
+}
+
+.suggestion-lines {
+    margin-top: 10px;
+}
+
+.suggestion-lines .line {
+    border-bottom: 1px solid black;
+    height: 25px;
+    margin-bottom: 5px;
+}
+
+/* Print optimizations */
+@media print {
+    .survey-printable-container {
+        border: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+}
+
+/* Mobile Responsiveness for Survey Sheet screen-view */
+@media (max-width: 768px) {
+    .survey-printable-container {
+        width: 100% !important;
+        min-height: auto !important;
+        padding: 20px 12px !important;
+        border: none !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+    }
+
+    .survey-header {
+        flex-direction: column !important;
+    }
+
+    .header-box {
+        width: 100% !important;
+        border-right: none !important;
+        border-bottom: 1.5px solid black !important;
+        text-align: center !important;
+        align-items: center !important;
+        padding: 8px !important;
+    }
+
+    .header-box:last-child {
+        border-bottom: none !important;
+    }
+
+    .field-row {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 6px !important;
+        margin-bottom: 15px !important;
+    }
+
+    .field-line {
+        margin-left: 0 !important;
+        padding-top: 2px !important;
+    }
+
+    .scale-legend {
+        flex-direction: column !important;
+    }
+
+    .scale-item {
+        border-right: none !important;
+        border-bottom: 1px solid black !important;
+        padding: 8px !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        gap: 12px !important;
+        text-align: left !important;
+    }
+
+    .scale-item:last-child {
+        border-bottom: none !important;
+    }
+
+    .scale-num {
+        min-width: 24px;
+    }
+
+    .survey-table {
+        min-width: 600px !important;
+    }
+}
+

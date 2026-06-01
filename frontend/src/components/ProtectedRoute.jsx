@@ -6,10 +6,10 @@ export default function ProtectedRoute({ children, role }) {
   const roles = JSON.parse(localStorage.getItem("roles") || "[]");
 
   if (!token) {
-    return <Navigate to="/login" />;
+    return <Navigate to={`/login?redirect=${encodeURIComponent(window.location.pathname)}`} />;
   }
 
-  if (!roles.includes(role)) {
+  if (role && !roles.includes(role)) {
     return <Navigate to="/login" />;
   }
 

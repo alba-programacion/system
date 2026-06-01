@@ -1,0 +1,589 @@
+/* --- VARIABLES Y RESET --- (Sin cambios) */
+:root {
+    --primary-blue: #001e3c;
+    --secondary-blue: #3b82f6;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --bg-light: #f8fafd;
+    --border-color: #e2e8f0;
+    --success-green: #10b981;
+    --danger-red: #ef4444;
+    --warning-amber: #f59e0b;
+}
+
+.vida-campus-container {
+    padding: 25px;
+    background-color: var(--bg-light);
+    min-height: 100vh;
+    font-family: 'Inter', -apple-system, sans-serif;
+}
+
+.hidden-input {
+    display: none;
+}
+
+/* --- HEADER DE LA VISTA --- (Sin cambios) */
+.view-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 30px;
+}
+
+.header-info-main h1 {
+    color: var(--primary-blue);
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.header-info-main p {
+    color: var(--text-muted);
+    margin-top: 5px;
+}
+
+.header-actions {
+    display: flex;
+    gap: 12px;
+}
+
+/* --- BARRA DE CARGA RÁPIDA --- (Sin cambios) */
+.quick-upload-bar {
+    background: #f8fafc;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    margin-bottom: 25px;
+}
+
+.quick-upload-bar.edit-mode-active {
+    background: #fffbeb;
+    border: 1px solid var(--warning-amber);
+}
+
+.input-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.input-title, .input-desc {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    background: white;
+    font-size: 0.95rem;
+    color: var(--text-main);
+}
+
+.input-title { flex: 1; }
+.input-desc { flex: 2; }
+
+.button-row {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+/* --- BOTONES --- (Sin cambios) */
+.btn-primary {
+    background: var(--primary-blue);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.3s;
+}
+
+.btn-primary:hover { background: #002d5a; }
+
+.btn-secondary {
+    background: #e1e7ef;
+    color: #334155;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-dark {
+    background: #0f172a;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-edit-save {
+    background: var(--warning-amber);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* --- SECCIONES (CARDS) --- */
+.admin-section {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 25px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    /* Ajuste para contener el grid y no desbordarse */
+    max-height: 700px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin-bottom: 25px;
+    border-bottom: 1px solid #f1f5f9;
+    padding-bottom: 15px;
+    margin-top: 0;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+/* --- MODIFICACIÓN: GRID DEL CARRUSEL --- */
+.carousel-editor-grid {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 25px;
+    align-items: start;
+    height: 600px; /* Altura fija para obligar al scroll */
+    overflow: hidden;
+}
+
+/* --- LISTA DE IMÁGENES (Corregido según tu inspector) --- */
+.slides-list {
+    border-right: 1px solid #f1f5f9;
+    padding-right: 15px;
+    height: 100%; /* Ocupa el alto del grid */
+    overflow-y: auto; /* Activa el scroll vertical */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Estilización de la barra de scroll para que se vea bien */
+.slides-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.slides-list::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+.slides-list::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+}
+
+.slides-list::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-blue);
+}
+
+/* --- TARJETAS INDIVIDUALES --- */
+.slide-item {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.slide-item:hover {
+    border-color: var(--secondary-blue);
+    background: #f8fafc;
+}
+
+.slide-item.active {
+    border-color: var(--secondary-blue);
+    background: #eff6ff;
+    box-shadow: 0 0 0 1px var(--secondary-blue);
+}
+
+/* Estilo para los botones dentro de cada item */
+.slide-item button {
+    margin-top: 8px;
+    margin-right: 10px;
+    font-weight: 700;
+    font-size: 0.75rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.slide-item .btn-edit { color: var(--primary-blue); }
+.slide-item .btn-delete { color: var(--danger-red); }
+
+/* --- PANEL DE PREVISUALIZACIÓN --- */
+.preview-main {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-slide-card {
+    width: 100%;
+    height: 400px;
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+}
+
+.main-slide-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.7;
+}
+
+/* --- MODIFICACIÓN: TARJETAS DE SLIDE --- */
+.slide-item-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 10px;
+    background: #fff;
+    flex-shrink: 0;
+}
+
+.slide-item-card:hover { 
+    background: #f8fafc;
+    border-color: var(--secondary-blue);
+}
+
+.slide-item-card.active { 
+    background: #eff6ff; 
+    border-color: var(--secondary-blue);
+}
+
+.slide-item-card img {
+    width: 70px;
+    height: 50px;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+.slide-info h4 {
+    font-size: 0.85rem;
+    margin: 0;
+    color: var(--text-main);
+    max-width: 140px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Botones de acción mejorados */
+.slide-actions-mini {
+    display: flex;
+    gap: 8px;
+    margin-left: auto;
+}
+
+.text-btn-edit {
+    color: var(--primary-blue);
+    font-weight: 700;
+    font-size: 0.7rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.text-btn-delete {
+    color: var(--danger-red);
+    border: none;
+    background: none;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 0.7rem;
+}
+
+/* --- EDITOR / PREVIEW --- */
+.preview-window {
+    height: 400px;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+}
+
+.preview-window img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.7;
+}
+
+.preview-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 30px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    color: white;
+}
+
+.preview-overlay h3 { margin: 0; font-size: 1.6rem; font-weight: 700; }
+.preview-overlay p { margin: 10px 0 0; opacity: 0.9; font-size: 0.95rem; }
+
+.badge-current {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--secondary-blue);
+    font-size: 0.65rem;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+/* --- GESTIÓN DE VIDEOS --- (Sin cambios) */
+.video-manager-grid {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 30px;
+}
+
+.video-player-wrapper {
+    background: #000;
+    border-radius: 12px;
+    aspect-ratio: 16/9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.video-element { width: 100%; height: 100%; }
+
+.playlist-scroll {
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+.playlist-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #f8fafc;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #f1f5f9;
+    cursor: pointer;
+}
+
+.playlist-item.active {
+    background: #f1f5f9;
+    border-color: var(--primary-blue);
+}
+
+.v-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    flex: 1;
+    color: var(--text-main);
+}
+
+/* --- EVENTOS --- (Sin cambios) */
+.event-form-card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+}
+
+.event-inputs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-weight: 700;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+
+.form-group input {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background: #fdfdfd;
+    color: var(--text-main); 
+    font-size: 0.95rem;
+}
+
+.form-group textarea {
+    /* Fondo siempre blanco */
+    background-color: #ffffff !important; 
+    
+    /* Color de texto siempre oscuro para que sea legible */
+    color: var(--text-main); 
+    
+    /* Bordes y espaciado */
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    
+    /* Tipografía */
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    
+    /* Comportamiento */
+    width: 100%;
+    min-height: 120px;
+    resize: vertical;
+    display: block;
+}
+
+/* Para asegurar que no cambie de color al pasar el mouse o al estar inactivo */
+.form-group textarea:hover,
+.form-group textarea:active,
+.form-group textarea:focus {
+    background-color: #ffffff;
+    border-color: var(--secondary-blue);
+    outline: none;
+    color: #000; /* Texto negro puro al interactuar */
+}
+
+/* Color del texto de ayuda (placeholder) */
+.form-group textarea::placeholder {
+    color: var(--text-muted);
+    opacity: 1; /* Asegura que el color no se desvanezca en algunos navegadores */
+}
+
+.events-admin-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.event-admin-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: #f8fafc;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+}
+
+.btn-event-delete {
+    background: #fee2e2;
+    color: var(--danger-red);
+    border: 1px solid #fecaca;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+/* --- FOOTER / STATS --- (Sin cambios) */
+.content-stats {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    margin-top: 10px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+.mini-stat span { font-size: 0.75rem; color: var(--text-muted); font-weight: 600; }
+.mini-stat strong { display: block; font-size: 1.25rem; color: var(--primary-blue); }
+
+.status-live {
+    margin-left: auto;
+    background: #ecfdf5;
+    color: #059669;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 800;
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.pulse {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #10b981;
+    animation: pulse-animation 2s infinite;
+}
+
+@keyframes pulse-animation {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+/* --- LOADING STATE --- (Sin cambios) */
+.loading-container {
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-blue);
+}
+
+.spin {
+    animation: spin 1.5s infinite linear;
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}

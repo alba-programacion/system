@@ -1,23 +1,15 @@
 require("dotenv").config();
 const connectDB = require("./src/config/db");
-const app = require("./src/app");
-const cors = require("cors");
-const express = require("express");
 
+// 1. Conectar a la base de datos
 connectDB();
 
-// habilitar CORS para el frontend
-app.use(
-  cors({
-    origin: "http://localhost:5173"
-  })
-);
+// 2. Importar la instancia de express desde src/app.js
+const app = require("./src/app");
 
-// habilitar JSON
-app.use(express.json());
-
-const PORT = process.env.PORT || 3000;
-
+// 3. Encender servidor
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`Servidor corriendo en puerto ${PORT}`);
+  console.log(`🚀 Servidor corriendo en: http://localhost:${PORT}`);
+  console.log(`📂 Archivos estáticos disponibles en: http://localhost:${PORT}/uploads`);
 });
