@@ -8,6 +8,15 @@ import EficaciaSurvey from '../components/EficaciaSurvey';
 import EficaciaEstudianteSurvey from '../components/EficaciaEstudianteSurvey';
 import { QRCodeSVG } from 'qrcode.react';
 
+const getDynamicHost = () => {
+  if (import.meta.env.VITE_BACKEND_URL) {
+    return import.meta.env.VITE_BACKEND_URL;
+  }
+  return window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.hostname.match(/^\d+\.\d+\.\d+\.\d+$/)
+    ? `http://${window.location.hostname}:5000`
+    : window.location.origin;
+};
+
 const CedulaAdmin = () => {
     const [activeSubTab, setActiveSubTab] = useState('courses'); // 'courses' | 'formats' | 'eficacia_surveys' | 'eficacia_estudiante_surveys' | 'opinion_surveys' | 'asistencia'
     const [events, setEvents] = useState([]);
@@ -970,7 +979,7 @@ const CedulaAdmin = () => {
                                                         <td className="no-print" style={{ textAlign: 'center' }}>
                                                             {c.evidenceUrl ? (
                                                                 <a 
-                                                                    href={`http://localhost:5000/${c.evidenceUrl}`} 
+                                                                    href={`${getDynamicHost()}/${c.evidenceUrl}`} 
                                                                     target="_blank" 
                                                                     rel="noopener noreferrer"
                                                                     style={{ display: 'inline-flex', alignItems: 'center', gap: '3px', color: '#3b82f6', textDecoration: 'none', fontWeight: 'bold' }}

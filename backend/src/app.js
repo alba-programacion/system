@@ -18,13 +18,28 @@ const app = express();
 // Middlewares
 app.use(cors({
     origin: (origin, callback) => {
-        // Permitir peticiones sin origin (ej. Postman), cualquier localhost o cualquier IP de red privada local
-        if (!origin || 
+        // Permitir peticiones sin origin (ej. Postman), cualquier localhost, cualquier IP de red privada local,
+        // el frontend de Vercel configurado o cualquier subdominio de vercel.app
+        let isAllowed = false;
+        if (!origin) {
+            isAllowed = true;
+        } else if (
             /^http:\/\/localhost(:\d+)?$/.test(origin) || 
             /^http:\/\/127\.0\.0\.1(:\d+)?$/.test(origin) || 
             /^http:\/\/192\.168\.\d+\.\d+(:\d+)?$/.test(origin) || 
             /^http:\/\/10\.\d+\.\d+\.\d+(:\d+)?$/.test(origin) || 
-            /^http:\/\/172\.(1[6-9]|2\d|3[0-1])\.\d+\.\d+(:\d+)?$/.test(origin)) {
+            /^http:\/\/172\.(1[6-9]|2\d|3[0-1])\.\d+\.\d+(:\d+)?$/.test(origin) ||
+            /\.vercel\.app$/.test(origin)
+        ) {
+            isAllowed = true;
+        } else if (process.env.FRONTEND_URL) {
+            // Normalizar FRONTEND_URL (remover http://, https:// y barra diagonal final /)
+            const cleanConfigUrl = process.env.FRONTEND_URL.replace(/^https?:\/\//i, '').replace(/\/$/, '');
+            const cleanOrigin = origin.replace(/^https?:\/\//i, '').replace(/\/$/, '');
+            isAllowed = (cleanOrigin === cleanConfigUrl);
+        }
+
+        if (isAllowed) {
             callback(null, true);
         } else {
             callback(new Error("No permitido por CORS"));

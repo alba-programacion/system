@@ -10,6 +10,9 @@ import defaultHeroImage from '../assets/campus_night.png';
 import logoInstitucional from "../assets/logo1.jpg";
 
 const getDynamicHost = () => {
+  if (import.meta.env.VITE_BACKEND_URL) {
+    return import.meta.env.VITE_BACKEND_URL;
+  }
   return window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.hostname.match(/^\d+\.\d+\.\d+\.\d+$/)
     ? `http://${window.location.hostname}:5000`
     : window.location.origin;
